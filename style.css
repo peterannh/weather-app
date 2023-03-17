@@ -119,3 +119,7 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.github-icon-link {
+  color: #193153;
+}
