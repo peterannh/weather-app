@@ -114,3 +114,8 @@ body {
   font-size: 18px;
   display: flex;
 }
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+}
