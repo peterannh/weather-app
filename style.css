@@ -1,0 +1,103 @@
+body {
+  background-color: #f5f1e9;
+}
+.container {
+  color: #272b2f;
+  font-family: "Nunito", sans-serif;
+  margin: 10px auto;
+  width: 550px;
+  height: 580px;
+}
+
+#city-search {
+  margin: 30px auto 20px auto;
+  text-align: center;
+  width: 560px;
+}
+
+.search-box {
+  display: inline;
+  width: 50%;
+}
+
+#search-button {
+  --bs-btn-bg: #3c87c1;
+  --bs-btn-border-color: #4c60d8;
+  --bs-btn-hover-bg: #4c60d8;
+  --bs-btn-hover-border-color: #4c60d8;
+}
+
+.card {
+  width: 560px;
+  height: 460px;
+  padding: 19px;
+  background: linear-gradient(
+    135deg,
+    rgb(82, 229, 231) 10%,
+    rgba(18, 12, 183, 0.828) 100%
+  );
+}
+
+.card-body {
+  padding: 0 16px 16px 16px;
+}
+
+#searched-city {
+  font-size: 35px;
+  font-weight: bold;
+  overflow-wrap: normal;
+}
+
+#current-temp {
+  font-size: 35px;
+}
+
+#temp-units {
+  font-size: 15px;
+  position: relative;
+  top: -12px;
+}
+
+#celcius-temp-link,
+#fahrenheit-temp-link {
+  text-decoration: none;
+}
+
+#todays-icon {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+#secondary-info {
+  font-size: 16px;
+  align-content: space-between;
+  list-style-type: none;
+  padding: 0;
+}
+
+.highest-temp {
+  font-weight: bold;
+}
+
+.lowest-temp {
+  color: #ffffff;
+}
+
+.date-info {
+  word-wrap: normal;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.forecast-icon {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  text-align: center;
+}
+
+.forecast-info {
+  font-size: 18px;
+  display: flex;
+}
