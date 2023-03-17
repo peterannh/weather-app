@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast ☀️</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form id="city-search">
+        <input
+          type="search"
+          id="city-input"
+          class="form-control search-box shadow-sm"
+          autofocus="on"
+          placeholder="Search for a city..."
+        />
+
+        <input
+          type="submit"
+          id="search-button"
+          class="btn btn-primary shadow-sm"
+          value="Search"
+        />
+
+        <button id="current-location-btn" class="btn btn-success">
+          Current
+        </button>
+      </form>
+
+      <div class="card-deck">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="row">
+              <div id="main-info" class="col-6 text-start">
+                <h1 id="searched-city" class="card-title"></h1>
+                <div class="card-text">
+                  <h2 id="current-temp">
+                    <span id="current-temp-value" class="highest-temp"></span>
+                    <span id="temp-units">
+                      <a href="#" id="celcius-temp-link">°C</a> |
+                      <a href="#" id="fahrenheit-temp-link">°F</a>
+                    </span>
+                  </h2>
+                  <ul id="secondary-info">
+                    <li id="current-date-time"></li>
+                    <li><span id="weather-description"></span></li>
+                    <li>Wind:<span id="wind-measurement"> </span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-6 text-end justify-content-center text-center">
+                <img
+                  class="img-responsive"
+                  id="todays-icon"
+                  src="media/animatied-icons/clear-day.svg"
+                  alt="Clear day icon"
+                />
+              </div>
+            </div>
+
+            <div
+              class="row forecast-info d-flex justify-content-center text-center"
+            >
+              <div class="col-2">
+                <div class="card-text date-info">Thur</div>
+                <img
+                  class="forecast-icon img-responsive"
+                  src="media/animatied-icons/cloudy.svg"
+                  alt="Cloudy icon"
+                />
+                <div class="forecast-temp">
+                  <span class="highest-temp">27° </span>
+                  <span class="lowest-temp">23°</span>
+                </div>
+              </div>
+
+              <div class="col-2">
+                <div class="card-text date-info">Fri</div>
+                <img
+                  class="forecast-icon img-responsive"
+                  src="media/animatied-icons/rain.svg"
+                  alt="Rainy icon"
+                />
+                <div class="forecast-temp">
+                  <span class="highest-temp">26° </span>
+                  <span class="lowest-temp">22°</span>
+                </div>
+              </div>
+
+              <div class="col-2">
+                <div class="card-text date-info">Sat</div>
+                <img
+                  class="forecast-icon img-responsive"
+                  src="media/animatied-icons/rain.svg"
+                  alt="Rainy icon"
+                />
+                <div class="forecast-temp">
+                  <span class="highest-temp">26° </span>
+                  <span class="lowest-temp">21°</span>
+                </div>
+              </div>
+
+              <div class="col-2">
+                <div class="card-text date-info">Sun</div>
+                <img
+                  class="forecast-icon img-responsive"
+                  src="media/animatied-icons/partly-cloudy-day.svg"
+                  alt="Partly cloudy icon"
+                />
+                <div class="forecast-temp">
+                  <span class="highest-temp">25° </span>
+                  <span class="lowest-temp">21°</span>
+                </div>
+              </div>
+
+              <div class="col-2">
+                <div class="card-text date-info">Mon</div>
+                <img
+                  class="forecast-icon img-responsive"
+                  src="media/animatied-icons/wind.svg"
+                  alt="Windy icon"
+                />
+                <div class="forecast-temp">
+                  <span class="highest-temp">24° </span>
+                  <span class="lowest-temp">20°</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
