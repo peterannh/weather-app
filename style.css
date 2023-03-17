@@ -27,6 +27,19 @@ body {
   --bs-btn-hover-border-color: #4c60d8;
 }
 
+#current-location-btn {
+  --bs-btn-color: #2c3674;
+  --bs-btn-bg: #f0b41dd4;
+  --bs-btn-border-color: #f0b41d;
+  --bs-btn-hover-color: #2c3674;
+  --bs-btn-hover-bg: #f9b103;
+  --bs-btn-hover-border-color: #f9b103;
+  --bs-btn-active-color: #2c3674;
+  --bs-btn-active-bg: #cc9203;
+  --bs-btn-active-border-color: #b58103;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
 .card {
   width: 560px;
   height: 460px;
