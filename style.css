@@ -123,3 +123,8 @@ body {
 .github-icon-link {
   color: #193153;
 }
+
+footer {
+  text-align: center;
+  margin-top: 10px;
+}
