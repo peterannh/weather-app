@@ -89,6 +89,15 @@ body {
   padding: 0;
 }
 
+.inline {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.move-right {
+  float: right;
+}
+
 .highest-temp {
   font-weight: bold;
 }

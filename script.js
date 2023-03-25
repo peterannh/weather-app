@@ -31,7 +31,7 @@ function formatDate(date) {
   let currentMonth = month[now.getMonth()];
   let currentDayOfMonth = now.getDate();
   let currentTime = `${hours}:${minutes}`;
-  let formattedDate = `${currentDay}, ${currentMonth} ${currentDayOfMonth} ${currentTime}`;
+  let formattedDate = `${currentDay} ${currentMonth} ${currentDayOfMonth} ${currentTime}`;
 
   let currentDateTime = document.getElementById("current-date-time");
   currentDateTime.innerHTML = formattedDate;
@@ -55,6 +55,10 @@ function displayWeatherInfo(response) {
     "#weather-description"
   );
   weatherDescriptionElement.innerHTML = weatherDescription;
+
+  let humidityPercentage = response.data.main.humidity;
+  let humidityPercentageElement = document.querySelector("#humdity-percentage");
+  humidityPercentageElement.innerHTML = ` ${humidityPercentage}%`;
 
   let windMeasurement = Math.round(response.data.wind.speed);
   let windMeasurementElement = document.querySelector("#wind-measurement");
