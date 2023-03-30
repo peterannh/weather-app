@@ -42,7 +42,10 @@ formatDate(now);
 // Feature 2 - Search function that updates the city name, temperature and secondary information
 function displayWeatherInfo(response) {
   console.log(response);
-  let cityTemp = Math.round(response.data.main.temp);
+
+  celciusTemperature = response.data.main.temp;
+
+  let cityTemp = Math.round(celciusTemperature);
   let currentTempValue = document.querySelector("#current-temp-value");
   currentTempValue.innerHTML = cityTemp;
 
@@ -105,15 +108,23 @@ currentLocationBtn.addEventListener("click", getCurrentLocation);
 
 function changeToFahrenheit(event) {
   event.preventDefault();
+  let farenheitValue = (celciusTemperature * 9) / 5 + 32;
+  // Remove the active class from the celcius link
+  celciusTemp.classList.remove("active-temp-link");
+  fahrenheitTemp.classList.add("active-temp-link");
   let currentFarenheitTemp = document.querySelector("#current-temp-value");
-  currentFarenheitTemp.innerHTML = 66;
+  currentFarenheitTemp.innerHTML = Math.round(farenheitValue);
 }
 
 function changeToCelcius(event) {
   event.preventDefault();
+  celciusTemp.classList.add("active-temp-link");
+  fahrenheitTemp.classList.remove("active-temp-link");
   let curentCelciusTemp = document.querySelector("#current-temp-value");
-  curentCelciusTemp.innerHTML = 20;
+  curentCelciusTemp.innerHTML = Math.round(celciusTemperature);
 }
+
+let celciusTemperature = null;
 
 let fahrenheitTemp = document.querySelector("#fahrenheit-temp-link");
 fahrenheitTemp.addEventListener("click", changeToFahrenheit);

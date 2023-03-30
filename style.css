@@ -106,6 +106,15 @@ body {
   color: #ffffff;
 }
 
+.active-temp-link {
+  color: #272b2f;
+  cursor: default;
+}
+
+.active-temp-link:hover {
+  text-decoration: none;
+}
+
 .date-info {
   word-wrap: normal;
   font-weight: bold;
