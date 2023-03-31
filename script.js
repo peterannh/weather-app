@@ -54,9 +54,11 @@ function displayWeatherInfo(response) {
   searchedCityElement.innerHTML = searchedCityName;
 
   let iconCode = response.data.weather[0].icon;
+  let iconAltCode = response.data.weather[0].description;
   let iconURL = `media/${iconCode}.svg`;
   let iconElement = document.querySelector("#todays-icon");
   iconElement.setAttribute("src", iconURL);
+  iconElement.setAttribute("alt", iconAltCode);
 
   let weatherDescription = response.data.weather[0].main;
   let weatherDescriptionElement = document.querySelector(
