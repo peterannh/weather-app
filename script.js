@@ -53,6 +53,11 @@ function displayWeatherInfo(response) {
   let searchedCityElement = document.querySelector("#searched-city");
   searchedCityElement.innerHTML = searchedCityName;
 
+  let iconCode = response.data.weather[0].icon;
+  let iconURL = `media/${iconCode}.svg`;
+  let iconElement = document.querySelector("#todays-icon");
+  iconElement.setAttribute("src", iconURL);
+
   let weatherDescription = response.data.weather[0].main;
   let weatherDescriptionElement = document.querySelector(
     "#weather-description"
