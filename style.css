@@ -42,7 +42,7 @@ body {
 
 .card {
   width: 560px;
-  height: 460px;
+  height: 440px;
   padding: 19px;
   background: linear-gradient(
     135deg,
@@ -91,11 +91,7 @@ body {
   align-content: space-between;
   list-style-type: none;
   padding: 0;
-}
-
-.inline {
-  display: inline-block;
-  margin-right: 10px;
+  line-height: 28px;
 }
 
 .active-temp-link {
@@ -115,9 +111,9 @@ body {
 .weather-forecast-container {
   flex: 1;
   text-align: center;
-  margin: 10px 10px 20px 10px;
+  margin: 20px 10px;
   width: fit-content;
-  font-size: 19px;
+  font-size: 17px;
 }
 
 .date-info {
