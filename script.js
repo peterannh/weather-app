@@ -93,6 +93,33 @@ citySearchForm.addEventListener("submit", userCitySearch);
 
 defaultCitySearch("Tokyo");
 
+function displayWeatherForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
+  let forecastHTML = "";
+
+  days.forEach(function (day) {
+    forecastHTML += `
+      <div class="d-flex justify-content-center align-items-center weather-forecast-container">
+        <div class="col-auto">
+          <div class="card-text date-info">${day}</div>
+          <img class="forecast-icon img-responsive" src="media/03d.svg" alt="Cloudy icon" />
+          <div class="forecast-temp">
+            <span class="highest-temp">27°</span>
+            <span class="lowest-temp">23°</span>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayWeatherForecast();
+
 // Feature 3 - Current Location Button
 
 function currentLocationSearch(position) {
