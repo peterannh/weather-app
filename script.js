@@ -73,6 +73,8 @@ function displayWeatherInfo(response) {
   let windMeasurement = Math.round(response.data.wind.speed);
   let windMeasurementElement = document.querySelector("#wind-measurement");
   windMeasurementElement.innerHTML = ` ${windMeasurement} km/h`;
+
+  getForecast(response.data.coord);
 }
 
 function defaultCitySearch(city) {
@@ -93,7 +95,9 @@ citySearchForm.addEventListener("submit", userCitySearch);
 
 defaultCitySearch("Tokyo");
 
-function displayWeatherForecast() {
+// Feature 3 - Show 5 day weather forecast
+function displayWeatherForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather-forecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
@@ -118,9 +122,17 @@ function displayWeatherForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
-displayWeatherForecast();
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let lat = coordinates.lat;
+  let lon = coordinates.lon;
+  let units = "metric";
+  let apiKey = "58a6775f97527351bf6c6966e209be39";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiURL).then(displayWeatherForecast);
+}
 
-// Feature 3 - Current Location Button
+// Feature 4 - Current Location Button
 
 function currentLocationSearch(position) {
   let apiKey = "58a6775f97527351bf6c6966e209be39";
@@ -128,7 +140,7 @@ function currentLocationSearch(position) {
   let longitude = position.coords.longitude;
   let units = "metric";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-  axios.get(apiURL).then(displayWeatherInfo);
+  axios.get(apiURL).then(displayWeatherForecast);
 }
 
 function getCurrentLocation(event) {
@@ -138,7 +150,7 @@ function getCurrentLocation(event) {
 let currentLocationBtn = document.getElementById("current-location-btn");
 currentLocationBtn.addEventListener("click", getCurrentLocation);
 
-// Feature 4 - Switch between celcius and farenheit
+// Feature 5 - Switch between celcius and farenheit
 
 function changeToFahrenheit(event) {
   event.preventDefault();
