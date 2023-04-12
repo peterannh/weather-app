@@ -52,11 +52,9 @@ function formatForecastDay(timestamp) {
 
 // Feature 2 - Search function that updates the city name, temperature and secondary information
 function displayWeatherInfo(response) {
-  console.log(response);
+  celsiusTemperature = response.data.main.temp;
 
-  celciusTemperature = response.data.main.temp;
-
-  let cityTemp = Math.round(celciusTemperature);
+  let cityTemp = Math.round(celsiusTemperature);
   let currentTempValue = document.querySelector("#current-temp-value");
   currentTempValue.innerHTML = cityTemp;
 
@@ -93,7 +91,6 @@ function defaultCitySearch(city) {
   let apiKey = "58a6775f97527351bf6c6966e209be39";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
   axios.get(apiURL).then(displayWeatherInfo);
-  console.log(apiURL);
 }
 
 function userCitySearch(event) {
@@ -108,7 +105,7 @@ defaultCitySearch("Tokyo");
 
 // Feature 3 - Show 5 day weather forecast
 function displayWeatherForecast(response) {
-  let forecast = response.data.daily.slice(0, 5);
+  let forecast = response.data.daily.slice(1, 6);
 
   let forecastElement = document.querySelector("#weather-forecast");
 
@@ -147,7 +144,6 @@ function displayWeatherForecast(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let lat = coordinates.lat;
   let lon = coordinates.lon;
   let units = "metric";
