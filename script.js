@@ -39,6 +39,17 @@ function formatDate(date) {
 
 formatDate(now);
 
+// Forecast Date function
+
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+
+  return days[day];
+}
+
 // Feature 2 - Search function that updates the city name, temperature and secondary information
 function displayWeatherInfo(response) {
   console.log(response);
@@ -97,26 +108,39 @@ defaultCitySearch("Tokyo");
 
 // Feature 3 - Show 5 day weather forecast
 function displayWeatherForecast(response) {
-  console.log(response.data.daily);
-  let forecastElement = document.querySelector("#weather-forecast");
+  let forecast = response.data.daily.slice(0, 5);
 
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = "";
 
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay, index) {
+    let highestTemp = Math.round(forecastDay.temp.max);
+    let lowestTemp = Math.round(forecastDay.temp.min);
+
+    let iconCode = forecastDay.weather[0].icon;
+    let iconAltCode = forecastDay.weather[0].description;
+    let iconURL = `media/${iconCode}.svg`;
+    let iconElement = document.createElement("img");
+    iconElement.setAttribute("class", "forecast-icon");
+    iconElement.setAttribute("src", iconURL);
+    iconElement.setAttribute("alt", iconAltCode);
+    iconElement.setAttribute("id", `forecast-icon-${index}`);
+
     forecastHTML += `
-      <div class="d-flex justify-content-center align-items-center weather-forecast-container">
-        <div class="col-auto">
-          <div class="card-text date-info">${day}</div>
-          <img class="forecast-icon img-responsive" src="media/03d.svg" alt="Cloudy icon" />
-          <div class="forecast-temp">
-            <span class="highest-temp">27°</span>
-            <span class="lowest-temp">23°</span>
-          </div>
+    <div class="d-flex justify-content-center align-items-center weather-forecast-container">
+      <div class="col-auto">
+        <div class="card-text date-info">${formatForecastDay(
+          forecastDay.dt
+        )}</div>
+        <img class="forecast-icon img-responsive" src="${iconURL}" alt="${iconAltCode}" id="forecast-icon-${index}" />
+        <div class="forecast-temp">
+          <span class="highest-temp">${highestTemp}°</span>
+          <span class="lowest-temp">${lowestTemp}°</span>
         </div>
       </div>
-    `;
+    </div>
+  `;
   });
 
   forecastElement.innerHTML = forecastHTML;
@@ -140,7 +164,7 @@ function currentLocationSearch(position) {
   let longitude = position.coords.longitude;
   let units = "metric";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-  axios.get(apiURL).then(displayWeatherForecast);
+  axios.get(apiURL).then(displayWeatherInfo);
 }
 
 function getCurrentLocation(event) {
