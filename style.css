@@ -69,15 +69,10 @@ body {
   font-weight: 700;
 }
 
-#temp-units {
+#temp-unit {
   font-size: 15px;
   position: relative;
   top: -12px;
-}
-
-#celcius-temp-link,
-#fahrenheit-temp-link {
-  text-decoration: none;
 }
 
 #todays-icon {

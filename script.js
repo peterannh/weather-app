@@ -173,31 +173,3 @@ function getCurrentLocation(event) {
 
 let currentLocationBtn = document.getElementById("current-location-btn");
 currentLocationBtn.addEventListener("click", getCurrentLocation);
-
-// Feature 5 - Switch between celcius and farenheit
-
-function changeToFahrenheit(event) {
-  event.preventDefault();
-  let farenheitValue = (celciusTemperature * 9) / 5 + 32;
-  // Remove the active class from the celcius link
-  celciusTemp.classList.remove("active-temp-link");
-  fahrenheitTemp.classList.add("active-temp-link");
-  let currentFarenheitTemp = document.querySelector("#current-temp-value");
-  currentFarenheitTemp.innerHTML = Math.round(farenheitValue);
-}
-
-function changeToCelcius(event) {
-  event.preventDefault();
-  celciusTemp.classList.add("active-temp-link");
-  fahrenheitTemp.classList.remove("active-temp-link");
-  let curentCelciusTemp = document.querySelector("#current-temp-value");
-  curentCelciusTemp.innerHTML = Math.round(celciusTemperature);
-}
-
-let celciusTemperature = null;
-
-let fahrenheitTemp = document.querySelector("#fahrenheit-temp-link");
-fahrenheitTemp.addEventListener("click", changeToFahrenheit);
-
-let celciusTemp = document.querySelector("#celcius-temp-link");
-celciusTemp.addEventListener("click", changeToCelcius);
