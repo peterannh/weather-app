@@ -151,6 +151,10 @@ body {
   color: #193153;
 }
 
+.icon-spacing {
+  margin: 0 10px;
+}
+
 footer {
   text-align: center;
   margin-top: 10px;
